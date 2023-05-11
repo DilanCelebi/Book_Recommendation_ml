@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            padding: 100px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333333;
+            margin-top: 0;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-size: 18px;
+            color: #333333;
+        }
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button[type=submit]:hover {
+            background-color: #3e8e41;
+        }
+        .book-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+        }
+        .book-card {
+            width: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: center;
+        }
+        .book-card img {
+            width: 150px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        .book-card h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .book-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size:60px">Book Recommendation System</h1>
+       
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:30px">
+            <a class="navbar-brand" href="/" style="color:#ffa500;font-weight:bold;font-size:40px;text-decoration:none;">Home</a>
+            <a class="navbar-brand" href="/recommend" style="color:#ffa500;font-weight:bold;font-size:40px;text-decoration:none;">Recommend</a>
+          </nav>
+          
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+                    <form action="/recommend_books" method="post">
+                        <input name="user_input" type="text" class="form-control"><br>
+                        <input type="submit" class="btn btn-lg btn-submit" value="Submit">
+
+                    </form>
+                </div>
+        
+                {% if data %}
+        
+                <div class="book-row">
+                    {% for i in data %}
+                        <div class="col-md-3" style="margin-top:50px">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="{{i[2]}}">
+                                    <p class="text-white">{{i[0]}}</p>
+                                    <h4 class="text-white">{{i[1]}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        
+                {% endif %}
+        
+            </div>
+        </div>
+        
+        <style>
+            .btn-submit {
+                display: inline-block;
+                background-color: #ffa500;
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                text-align: center;
+                border-radius: 5px;
+                border: none;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+                transition: all 0.3s ease;
+              }
+              
+              .btn-submit:hover {
+                transform: translateY(-2px);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+              }
+              
+            .book-row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                margin-bottom: 50px;
+            }
+        
+            .book-card {
+                width: 200px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                padding: 10px;
+                text-align: center;
+                margin: 0 10px;
+            }
+        
+            .book-card img {
+                width: 150px;
+                height: 200px;
+                margin-bottom: 10px;
+            }
+        
+            .book-card h4 {
+                margin: 0;
+                font-size: 16px;
+                color: #333;
+            }
+        
+            .book-card p {
+                margin: 0;
+                font-size: 14px;
+                color: #666;
+            }
+        </style>
+        
+          
